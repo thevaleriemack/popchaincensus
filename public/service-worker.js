@@ -40,7 +40,7 @@ self.addEventListener('install', function(event) {
 });
 
 // intercept the fetch to serve cached files
-self.addEventListener('fetch', funciton(event) {
+self.addEventListener('fetch', function(event) {
   if (doCache) {
     event.respondWith(
       caches.match(event.request).then(function(response) {
