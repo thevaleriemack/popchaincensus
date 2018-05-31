@@ -6,13 +6,20 @@ class Dashboard extends Component {
     authData = this.props
   }
 
+  showSharedData = (authData) => {
+    console.log(authData);
+    return JSON.stringify(authData, null, '\t');
+  }
+
   render() {
     return(
       <main className="container">
         <div className="pure-g">
           <div className="pure-u-1-1">
             <h1>Dashboard</h1>
-            <p><strong>Congratulations {this.props.authData.name}!</strong> If you're seeing this page, you've logged in with UPort successfully.</p>
+            <p><strong>Congratulations!</strong> If you're seeing this page, you've logged in with UPort successfully.</p>
+            <p>Here's the data that you shared with us:</p>
+            {this.showSharedData(this.props.authData)}
           </div>
         </div>
       </main>

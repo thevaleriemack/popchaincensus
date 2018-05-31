@@ -13,7 +13,11 @@ export function loginUser() {
   return function(dispatch) {
     // UPort and its web3 instance are defined in ./../../../util/wrappers.
     // Request uPort persona of account passed via QR
-    uport.requestCredentials().then((credentials) => {
+    // Request credentials to login
+    uport.requestCredentials({
+      requested: ['phone', 'country'],
+      notifications: true // recieves credentials below
+    }).then((credentials) => {
       dispatch(userLoggedIn(credentials))
 
       // Used a manual redirect here as opposed to a wrapper.
